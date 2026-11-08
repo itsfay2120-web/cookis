@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon panier | Cook'is</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #faf7f1;
+      color: #3d3028;
+    }
+
+    header {
+      background: #fffdf9;
+      border-bottom: 1px solid #eee4d7;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      color: #8b6748;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #514438;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #a77b4f;
+    }
+
+    .page-title {
+      text-align: center;
+      padding: 55px 20px 35px;
+    }
+
+    .page-title p {
+      color: #a77b4f;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .page-title h1 {
+      font-size: 42px;
+      font-weight: 600;
+    }
+
+    .container {
+      width: 88%;
+      max-width: 1150px;
+      margin: 0 auto 70px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .panel {
+      background: #fffdf9;
+      padding: 28px;
+      border: 1px solid #eee4d7;
+      border-radius: 15px;
+    }
+
+    .panel h2 {
+      font-size: 25px;
+      margin-bottom: 22px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 18px 0;
+      border-bottom: 1px solid #eee7dd;
+    }
+
+    .item-name {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .item-price {
+      color: #92704f;
+      font-size: 14px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .quantity button {
+      border: 1px solid #d9c8b5;
+      background: #faf5ed;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .remove {
+      border: none;
+      background: none;
+      color: #a64d40;
+      cursor: pointer;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .item-total {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 35px 10px;
+      color: #806f60;
+    }
+
+    .empty a {
+      display: inline-block;
+      margin-top: 18px;
+      color: #fff;
+      background: #92704f;
+      padding: 12px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+      color: #746456;
+    }
+
+    .summary-total {
+      border-top: 1px solid #e8ddcf;
+      padding-top: 18px;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #3d3028;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ded2c4;
+      border-radius: 8px;
+      background: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #a77b4f;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 85px;
+    }
+
+    .payment-option {
+      border: 1px solid #e4d8ca;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .payment-option input {
+      width: auto;
+      accent-color: #92704f;
+    }
+
+    .payment-option strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .payment-option small {
+      color: #806f60;
+    }
+
+    .payment-option:has(input:checked) {
+      border-color: #a77b4f;
+      background: #faf5ed;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #92704f;
+      color: white;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    .submit-btn:hover {
+      background: #76583d;
+    }
+
+    .notice {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #806f60;
+      margin-top: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #eee5d9;
+      color: #756354;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+        width: 92%;
+      }
+
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .page-title h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Cook'is</a>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="produits.html">Produits</a>
+      <a href="panier.html">Panier</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="page-title">
+    <p>Votre sélection</p>
+    <h1>Mon panier</h1>
+  </section>
+
+  <main class="container">
+
+    <section class="panel">
+      <h2>Mes produits</h2>
+      <div id="cartItems"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Finaliser ma commande</h2>
+
+      <div class="summary-line">
+        <span>Sous-total</span>
+        <span id="subtotal">0.000 DT</span>
+      </div>
+
+      <div class="summary-line">
+        <span>Livraison</span>
+        <span>À confirmer</span>
+      </div>
+
+      <div class="summary-line summary-total">
+        <span>Total</span>
+        <span id="total">0.000 DT</span>
+      </div>
+
+      <form id="orderForm">
+
+        <div class="form-group">
+          <label for="customerName">Nom complet</label>
+          <input type="text" id="customerName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="customerPhone">Téléphone</label>
+          <input type="tel" id="customerPhone" required>
+        </div>
+
+        <div class="form-group">
+          <label for="customerAddress">Adresse de livraison</label>
+          <textarea id="customerAddress" required></textarea>
+        </div>
+
+        <h2 style="font-size:21px; margin:25px 0 15px;">
+          Mode de paiement
+        </h2>
+
+        <label class="payment-option">
+          <input type="radio" name="payment" value="cash" checked>
+          <span>
+            <strong>Espèces à la livraison</strong>
+            <small>Payez lorsque vous recevez votre commande.</small>
+          </span>
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="payment" value="card">
+          <span>
+            <strong>Carte bancaire</strong>
+            <small>Paiement en ligne sécurisé (à configurer).</small>
+          </span>
+        </label>
+
+        <button type="submit" class="submit-btn">
+          Confirmer ma commande
+        </button>
+
+        <p class="notice">
+          Le paiement par carte sera activé après la connexion
+          à un prestataire de paiement sécurisé.
+        </p>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Cook'is — Tous droits réservés.
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cookisCart")) || [];
+
+    const cartItems = document.getElementById("cartItems");
+    const subtotalElement = document.getElementById("subtotal");
+    const totalElement = document.getElementById("total");
+
+    function saveCart() {
+      localStorage.setItem("cookisCart", JSON.stringify(cart));
+    }
+
+    function formatPrice(price) {
+      return Number(price).toFixed(3) + " DT";
+    }
+
+    function calculateTotal() {
+      return cart.reduce((sum, item) => {
+        return sum + Number(item.price) * Number(item.qty);
+      }, 0);
+    }
+
+    function displayCart() {
+      cartItems.innerHTML = "";
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = `
+          <div class="empty">
+            <p>Votre panier est vide.</p>
+            <a href="produits.html">Découvrir nos produits</a>
+          </div>
+        `;
+
+        subtotalElement.textContent = formatPrice(0);
+        totalElement.textContent = formatPrice(0);
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const quantity = Number(item.qty) || 1;
+        const price = Number(item.price) || 0;
+        const itemTotal = price * quantity;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+
+        div.innerHTML = `
+          <div>
+            <div class="item-name">${item.name}</div>
+            <div class="item-price">${formatPrice(price)} / kg</div>
+
+            <div class="quantity">
+              <button type="button" onclick="changeQuantity(${index}, -1)">−</button>
+              <span>${quantity}</span>
+              <button type="button" onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+
+            <button class="remove" type="button" onclick="removeItem(${index})">
+              Supprimer
+            </button>
+          </div>
+
+          <div class="item-total">${formatPrice(itemTotal)}</div>
+        `;
+
+        cartItems.appendChild(div);
+      });
+
+      const total = calculateTotal();
+      subtotalElement.textContent = formatPrice(total);
+      totalElement.textContent = formatPrice(total);
+    }
+
+    function changeQuantity(index, change) {
+      cart[index].qty = Number(cart[index].qty) + change;
+
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+
+      saveCart();
+      displayCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      saveCart();
+      displayCart();
+    }
+
+    document.getElementById("orderForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (cart.length === 0) {
+        alert("Votre panier est vide.");
+        return;
+      }
+
+      const payment = document.querySelector('input[name="payment"]:checked').value;
+
+      if (payment === "card") {
+        alert(
+          "Le paiement par carte n'est pas encore activé. " +
+          "Nous devons d'abord connecter un prestataire de paiement sécurisé."
+        );
+        return;
+      }
+
+      const order = {
+        id: Date.now(),
+        customer: document.getElementById("customerName").value.trim(),
+        phone: document.getElementById("customerPhone").value.trim(),
+        address: document.getElementById("customerAddress").value.trim(),
+        payment: "Espèces à la livraison",
+        items: cart,
+        total: calculateTotal(),
+        status: "En attente",
+        date: new Date().toLocaleString("fr-FR")
+      };
+
+      const orders = JSON.parse(localStorage.getItem("cookisOrders")) || [];
+      orders.push(order);
+
+      localStorage.setItem("cookisOrders", JSON.stringify(orders));
+      localStorage.removeItem("cookisCart");
+
+      alert("Commande enregistrée sur cet appareil. Merci pour votre confiance !");
+
+      cart = [];
+      displayCart();
+      this.reset();
+    });
+
+    displayCart();
+  </script>
+
+</body>
+</html>

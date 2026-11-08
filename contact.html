@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Cook'is</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #faf7f1;
+      color: #3d3028;
+    }
+
+    header {
+      background: #fffdf9;
+      border-bottom: 1px solid #eee4d7;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      color: #8b6748;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #514438;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #a77b4f;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .hero p {
+      color: #a77b4f;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      margin-bottom: 15px;
+    }
+
+    .hero span {
+      color: #806f60;
+    }
+
+    .container {
+      width: 88%;
+      max-width: 1100px;
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 30px;
+    }
+
+    .info, .contact-form {
+      background: #fffdf9;
+      padding: 32px;
+      border: 1px solid #eee4d7;
+      border-radius: 14px;
+    }
+
+    h2 {
+      font-size: 27px;
+      margin-bottom: 22px;
+    }
+
+    .info-item {
+      padding: 18px 0;
+      border-bottom: 1px solid #eee7dd;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-item strong {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .info-item span, .info-item a {
+      color: #806f60;
+      font-size: 14px;
+      line-height: 1.8;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-form p {
+      color: #806f60;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .form-group {
+      margin-bottom: 17px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ded2c4;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      background: white;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #a77b4f;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: #92704f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #76583d;
+    }
+
+    .note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #8b7968;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #eee5d9;
+      color: #756354;
+      font-size: 13px;
+    }
+
+    @media(max-width: 800px) {
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+        width: 92%;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Cook'is</a>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="produits.html">Produits</a>
+      <a href="panier.html">Panier</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p>Nous sommes à votre écoute</p>
+    <h1>Contactez-nous</h1>
+    <span>Une question ou une demande ? Écrivez-nous.</span>
+  </section>
+
+  <main class="container">
+
+    <section class="info">
+      <h2>Nos coordonnées</h2>
+
+      <div class="info-item">
+        <strong>Instagram</strong>
+        <a href="https://www.instagram.com/cookis_with_love_by_hanen/"
+           target="_blank" rel="noopener">
+          @cookis_with_love_by_hanen
+        </a>
+      </div>
+
+      <div class="info-item">
+        <strong>Facebook</strong>
+        <span>Retrouvez Cook'is sur Facebook.</span>
+      </div>
+
+      <div class="info-item">
+        <strong>Localisation</strong>
+        <span>Contactez-nous pour connaître notre zone de livraison.</span>
+      </div>
+
+      <div class="info-item">
+        <strong>Commandes</strong>
+        <span>
+          Découvrez nos produits et passez votre commande
+          directement depuis notre boutique.
+        </span>
+      </div>
+    </section>
+
+    <section class="contact-form">
+      <h2>Envoyez-nous un message</h2>
+
+      <p>
+        Remplissez le formulaire ci-dessous.
+        La fonction d'envoi sera activée après la connexion
+        de notre site à un service de messagerie.
+      </p>
+
+      <form id="contactForm">
+
+        <div class="form-group">
+          <label for="name">Nom complet</label>
+          <input type="text" id="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Adresse e-mail</label>
+          <input type="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Sujet</label>
+          <input type="text" id="subject" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Votre message</label>
+          <textarea id="message" required></textarea>
+        </div>
+
+        <button type="submit">Envoyer le message</button>
+
+        <div class="note">
+          Formulaire visuel pour le moment : aucun message
+          n'est encore envoyé ou enregistré.
+        </div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Cook'is — Tous droits réservés.
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      alert(
+        "Merci pour votre message ! " +
+        "L'envoi sera disponible après la configuration du service de messagerie."
+      );
+    });
+  </script>
+
+</body>
+</html>
